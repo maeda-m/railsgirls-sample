@@ -1,0 +1,21 @@
+<hr />
+
+<%= form_tag(liked_idea_path(@idea)) do %>
+  <div class="field">
+    <%= text_field_tag :comment %>
+    <%= submit_tag 'like!' %>
+  </div>
+<% end %>
+
+<h3><%= @idea.likes.count %> likes</h3>
+<table>
+  <tr>
+    <th>like comment</th>
+  </tr>
+
+<% @idea.likes.each do |like| %>
+  <tr>
+    <td><%= like.comment %></td>
+  </tr>
+<% end %>
+</table>
