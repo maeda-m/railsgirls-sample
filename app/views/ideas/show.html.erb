@@ -15,8 +15,21 @@
   <%= image_tag(@idea.picture_url, width: 600) if @idea.picture.present? %>
 </p>
 
+<table>
+  <tr>
+    <th>Comment</th>
+  </tr>
+
+<% @idea.likes.each do |like| %>
+  <% unless like.comment.blank? %>
+  <tr>
+    <td><%= like.comment %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+
+<%= render 'likes/form' %>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>
-
-<%= render 'likes/form' %>
