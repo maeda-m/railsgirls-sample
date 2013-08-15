@@ -1,4 +1,7 @@
 Railsgirls::Application.routes.draw do
+  resources :likes
+
+
   resources :ideas
 
 
