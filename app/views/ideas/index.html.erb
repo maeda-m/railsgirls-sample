@@ -1,6 +1,6 @@
 <h1>Listing ideas</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -14,14 +14,14 @@
   <tr>
     <td><%= idea.name %></td>
     <td><%= idea.description %></td>
-    <td><%= idea.picture %></td>
-    <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-    <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= image_tag idea.picture_url, {size: '120x120'} if idea.picture.present? %></td>
+    <td><%= link_to 'Show', idea, class: 'btn' %></td>
+    <td><%= link_to 'Edit', edit_idea_path(idea), class: 'btn' %></td>
+    <td><%= link_to 'Destroy', idea, method: :delete, class: 'btn', data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Idea', new_idea_path %>
+<%= link_to 'New Idea', new_idea_path, class: 'btn btn-info btn-large' %>
