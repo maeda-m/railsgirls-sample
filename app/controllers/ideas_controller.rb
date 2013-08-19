@@ -91,4 +91,24 @@ class IdeasController < ApplicationController
   def top5
     @ideas = Idea.top5
   end
+
+  def print_top5
+    @ideas = Idea.top5
+
+    report = ThinReports::Report.new(layout: File.join(Rails.root, 'app', 'reports', 'top5.tlf'))
+    @ideas.each do |idea|
+      report.list.add_row do |row|
+        row.item(:rank).value(idea.rank)
+        row.item(:name).value(idea.name)
+        row.item(:description).value(idea.description)
+        row.item(:picture).src(idea.picture)
+        row.item(:likes).value(idea.likes.count)
+      end
+    end
+
+    send_data report.generate, filename: 'top5.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
+  end
+
 end
