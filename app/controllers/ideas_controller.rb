@@ -103,12 +103,17 @@ class IdeasController < ApplicationController
         row.item(:description).value(idea.description)
         row.item(:picture).src(idea.picture)
         row.item(:likes).value(idea.likes.count)
+
+        # row.values rank: idea.rank,
+        #   name: idea.name, description: idea.description,
+        #   picture: idea.picture, likes: idea.likes.count
       end
     end
 
     send_data report.generate, filename: 'top5.pdf', 
                                type: 'application/pdf', 
                                disposition: 'attachment'
+                               # disposition: 'inline'
   end
 
 end
