@@ -1,8 +1,10 @@
+<div class="row print-action">
+  <%= link_to 'Print', { action: :print_top5 }, class: 'btn btn-info btn-large' %>
+</div>
+
 <h1>Listing ideas</h1>
 
-<%= link_to 'Print', action: :print_top5 %>
-
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <th>Rank</th>
     <th>Name</th>
@@ -14,20 +16,20 @@
     <th></th>
   </tr>
 
-<% @ideas.each_with_index do |idea, index| %>
+<% @ideas.each do |idea| %>
   <tr>
     <td><%= idea.rank %></td>
     <td><%= idea.name %></td>
     <td><%= idea.description %></td>
-    <td><%= idea.picture %></td>
+    <td><%= image_tag idea.picture_url, {size: '120x120'} if idea.picture.present? %></td>
     <td><%= idea.likes.count %></td>
-    <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-    <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', idea, class: 'btn' %></td>
+    <td><%= link_to 'Edit', edit_idea_path(idea), class: 'btn' %></td>
+    <td><%= link_to 'Destroy', idea, method: :delete, class: 'btn', data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Idea', new_idea_path %>
+<%= link_to 'New Idea', new_idea_path, class: 'btn btn-info btn-large' %>
