@@ -1,6 +1,7 @@
 Railsgirls::Application.routes.draw do
   resources :ideas do
     post 'liked', :on => :member
+    get 'top5', :on => :collection
   end
 
 
