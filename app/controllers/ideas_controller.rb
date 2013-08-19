@@ -80,4 +80,16 @@ class IdeasController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # 
+  def liked
+    @idea = Idea.find(params[:id])
+    @idea.likes.create(comment: params[:comment])
+    render action: :show
+  end
+
+  def top5
+    @ideas = Idea.top5
+    render action: :index
+  end
 end

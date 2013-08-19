@@ -15,6 +15,7 @@
   <%= image_tag(@idea.picture_url, width: 600) if @idea.picture.present? %>
 </p>
 
-
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>
+
+<%= render 'likes_list_and_form' %>
