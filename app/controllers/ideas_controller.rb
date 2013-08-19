@@ -90,6 +90,5 @@ class IdeasController < ApplicationController
 
   def top5
     @ideas = Idea.top5
-    render action: :index
   end
 end
