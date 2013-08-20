@@ -88,8 +88,15 @@ class IdeasController < ApplicationController
     render action: :show
   end
 
+  # GET /ideas/top5
+  # GET /ideas/top5.json
   def top5
     @ideas = Idea.top5
+
+    respond_to do |format|
+      format.html # top5.html.erb
+      format.json { render json: @ideas }
+    end
   end
 
   def print_top5
