@@ -1,14 +1,7 @@
 <hr />
 
-<%= form_tag(liked_idea_path(@idea)) do %>
-  <div class="field">
-    <%= text_field_tag :comment %>
-    <%= submit_tag 'like!' %>
-  </div>
-<% end %>
-
 <h3><%= @idea.likes.count %> likes</h3>
-<table>
+<table class="table table-striped table-hover">
   <tr>
     <th>like comment</th>
   </tr>
@@ -19,3 +12,10 @@
   </tr>
 <% end %>
 </table>
+
+<%= form_tag(liked_idea_path(@idea), :class => 'form-horizontal well') do %>
+  <div class="field">
+    <%= text_field_tag :comment %>
+    <%= submit_tag 'like!' %>
+  </div>
+<% end %>
