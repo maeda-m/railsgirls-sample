@@ -2,6 +2,7 @@ class Idea < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   attr_accessible :description, :name, :picture
   has_many :likes
+  belongs_to :user
 
   # scope :top5,
   #   select("ideas.id, ideas.name, ideas.description, count(likes.id) AS likes_count").

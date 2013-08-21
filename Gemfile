@@ -8,6 +8,9 @@ gem 'rails', '3.2.14'
 gem 'sqlite3'
 gem 'carrierwave'
 gem 'thinreports'
+# TODO run mingw32
+gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby', :require => 'bcrypt'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.

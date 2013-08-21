@@ -1,4 +1,6 @@
 Railsgirls::Application.routes.draw do
+  devise_for :users
+
   resources :ideas do
     post 'liked', :on => :member
     get 'top5', :on => :collection

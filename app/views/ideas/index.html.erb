@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Picture</th>
+    <th>Author</th>
     <th>likes</th>
     <th></th>
     <th></th>
@@ -16,6 +17,7 @@
     <td><%= idea.name %></td>
     <td><%= idea.description %></td>
     <td><%= image_tag idea.picture_url, {size: '120x120'} if idea.picture.present? %></td>
+    <td><%= idea.user.try(:email) %></td>
     <td><%= idea.likes.count %></td>
     <td><%= link_to 'Show', idea, class: 'btn' %></td>
     <td><%= link_to 'Edit', edit_idea_path(idea), class: 'btn' %></td>
