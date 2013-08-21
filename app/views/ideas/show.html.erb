@@ -1,26 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="row-fluid well">
+
+<p class="lead">
   <b>Name:</b>
   <%= @idea.name %>
 </p>
 
-<p>
+<p class="lead">
   <b>Description:</b>
   <%= @idea.description %>
 </p>
 
-<p>
+<p class="lead">
   <b>Picture:</b>
-  <%= image_tag(@idea.picture_url, width: 600) if @idea.picture.present? %>
+  <%= image_tag(@idea.picture_url, width: 300) if @idea.picture.present? %>
 </p>
 
-<p>
+<p class="lead">
   <b>Author:</b>
   <%= @idea.user.try(:email) %>
 </p>
+
+</div>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>
 
 <%= render 'likes_list_and_form' %>
+
