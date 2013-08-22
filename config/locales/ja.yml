@@ -1,0 +1,12 @@
+ja:
+  ideas:
+    rank: 順位
+    name: 名称
+    description: 説明
+    picture: 画像
+    likes: いいね!
+    author: 作成者
+  views:
+    idea: アイディア
+    print: 印刷
+    new_idea: 新しいアイディア
