@@ -1,0 +1,39 @@
+<h1><%= t('views.idea') %></h1>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th><%= t('ideas.rank')%></th>
+    <th><%= t('ideas.name')%></th>
+    <th><%= t('ideas.description') %></th>
+    <th><%= t('ideas.picture') %></th>
+    <th><%= t('ideas.author') %></th>
+    <th><%= t('ideas.likes') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ideas.each do |idea| %>
+  <tr>
+    <td><%= idea.rank %></td>
+    <td><%= idea.name %></td>
+    <td><%= idea.description %></td>
+    <td><%= image_tag idea.picture_url, {size: '120x120'} if idea.picture.present? %></td>
+    <td><%= idea.user.try(:email) %></td>
+    <td><%= idea.likes.count %></td>
+    <% if idea.user_id == current_user.id %>
+      <td><%= link_to 'Show', idea, class: 'btn' %></td>
+      <td><%= link_to 'Edit', edit_idea_path(idea), class: 'btn' %></td>
+      <td><%= link_to 'Destroy', idea, method: :delete, class: 'btn', data: { confirm: 'Are you sure?' } %></td>
+    <% else %>
+      <td></td>
+      <td></td>
+      <td></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t('views.new_idea'), new_idea_path, class: 'btn btn-info btn-large' %>

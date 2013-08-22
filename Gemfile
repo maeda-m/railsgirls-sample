@@ -11,6 +11,7 @@ gem 'thinreports'
 # TODO run mingw32
 gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby', :require => 'bcrypt'
 gem 'devise'
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.

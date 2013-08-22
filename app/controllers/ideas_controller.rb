@@ -1,8 +1,11 @@
 class IdeasController < ApplicationController
+
+  before_filter :authenticate_user!, only: [:liked]
+  
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = Idea.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,8 +88,18 @@ class IdeasController < ApplicationController
   # 
   def liked
     @idea = Idea.find(params[:id])
-    @idea.likes.create(comment: params[:comment])
+    @idea.likes.create({
+      comment: params[:comment],
+      user_id: current_user.id
+    })
     render action: :show
+  end
+
+  # DELETE /ideas/like.id/unlike
+  def unlike
+    like = Like.find(params[:id])
+    like.destroy
+    redirect_to action: :show, id: like.idea.id
   end
 
   # GET /ideas/top5

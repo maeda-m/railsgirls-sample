@@ -6,7 +6,16 @@ ja:
     picture: 画像
     likes: いいね!
     author: 作成者
+    unlike: いいね!を取り消す
   views:
     idea: アイディア
     print: 印刷
     new_idea: 新しいアイディア
+  activerecord:
+      errors:
+        models:
+          user:
+            attributes:
+              password:
+                too_short: が短すぎます
+                blank: を入力してください

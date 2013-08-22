@@ -2,9 +2,15 @@ Railsgirls::Application.routes.draw do
   devise_for :users
 
   resources :ideas do
-    post 'liked', :on => :member
-    get 'top5', :on => :collection
-    get 'print_top5', :on => :collection
+    member do
+      post 'liked'
+      delete 'unlike'
+    end
+
+    collection do 
+      get 'top5'
+      get 'print_top5'
+    end
   end
 
 

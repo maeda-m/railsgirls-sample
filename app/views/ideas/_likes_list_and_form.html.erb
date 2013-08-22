@@ -1,16 +1,22 @@
 <hr />
 
 <h3><%= @idea.likes.count %> likes</h3>
-<table class="table table-striped table-hover">
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>like comment</th>
     <th>liked user</th>
+    <th></th>
   </tr>
 
 <% @idea.likes.each do |like| %>
   <tr>
     <td><%= like.comment %></td>
     <td><%= like.user.try(:email) %></td>
+    <td>
+      <% if like.user_id == current_user.id %>
+        <%= link_to t('ideas.unlike'), { action: :unlike, id: like.id }, method: :delete, class: 'btn', data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
